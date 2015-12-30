@@ -21,7 +21,7 @@ CURRENT_VERSION=$(sed -nr 's/ENV BITBUCKET_VERSION[[:space:]]*(.+)/\1/p' Dockerf
 # feed information to get a JSONP formatted response, strip the output to
 # retrieve the actual content and then get the version number from the first
 # entry.
-VERSION=${1:-"$(curl -Ls 'https://my.atlassian.com/download/feeds/current/Bitbucket.json' | sed 's/downloads(\(.*\))/\1/g' | jq -r '.[0].version')"}
+VERSION=${1:-"$(curl -Ls 'https://my.atlassian.com/download/feeds/current/stash.json' | sed 's/downloads(\(.*\))/\1/g' | jq -r '.[0].version')"}
 
 # Outputs the version information
 echo "Found versions:"
