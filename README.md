@@ -1,8 +1,8 @@
 # Atlassian Bitbucket in a Docker container
 
-> Version 4.2.0
+> Version 4.1.3
 
-[![Build Status](https://img.shields.io/circleci/project/cptactionhank/docker-atlassian-bitbucket/4.2.0.svg)](https://circleci.com/gh/cptactionhank/docker-atlassian-bitbucket) [![Open Issues](https://img.shields.io/github/issues/cptactionhank/docker-atlassian-bitbucket.svg)](https://github.com/cptactionhank/docker-atlassian-bitbucket/issues) [![Stars on GitHub](https://img.shields.io/github/stars/cptactionhank/docker-atlassian-bitbucket.svg)](https://github.com/cptactionhank/docker-atlassian-bitbucket/stargazers) [![Forks on GitHub](https://img.shields.io/github/forks/cptactionhank/docker-atlassian-bitbucket.svg)](https://github.com/cptactionhank/docker-atlassian-bitbucket/network) [![Stars on Docker Hub](https://img.shields.io/docker/stars/cptactionhank/atlassian-bitbucket.svg)](https://hub.docker.com/r/cptactionhank/atlassian-bitbucket/) [![Pulls on Docker Hub](https://img.shields.io/docker/pulls/cptactionhank/atlassian-bitbucket.svg)](https://hub.docker.com/r/cptactionhank/atlassian-bitbucket/)
+[![Build Status](https://img.shields.io/circleci/project/cptactionhank/docker-atlassian-bitbucket/4.1.3.svg)](https://circleci.com/gh/cptactionhank/docker-atlassian-bitbucket) [![Open Issues](https://img.shields.io/github/issues/cptactionhank/docker-atlassian-bitbucket.svg)](https://github.com/cptactionhank/docker-atlassian-bitbucket/issues) [![Stars on GitHub](https://img.shields.io/github/stars/cptactionhank/docker-atlassian-bitbucket.svg)](https://github.com/cptactionhank/docker-atlassian-bitbucket/stargazers) [![Forks on GitHub](https://img.shields.io/github/forks/cptactionhank/docker-atlassian-bitbucket.svg)](https://github.com/cptactionhank/docker-atlassian-bitbucket/network) [![Stars on Docker Hub](https://img.shields.io/docker/stars/cptactionhank/atlassian-bitbucket.svg)](https://hub.docker.com/r/cptactionhank/atlassian-bitbucket/) [![Pulls on Docker Hub](https://img.shields.io/docker/pulls/cptactionhank/atlassian-bitbucket.svg)](https://hub.docker.com/r/cptactionhank/atlassian-bitbucket/)
 
 A containerized installation of Atlassian Bitbucket setup with a goal of keeping the installation as default as possible, but with a few Docker related twists.
 
@@ -12,7 +12,7 @@ Want to help out, check out the contribution section.
 
 To quickly get started with running a Bitbucket instance, first run the following command:
 ```bash
-docker run --detach --publish 7990:7990 cptactionhank/atlassian-bitbucket:4.2.0
+docker run --detach --publish 7990:7990 cptactionhank/atlassian-bitbucket:4.1.3
 ```
 
 Then use your browser to navigate to `http://[dockerhost]:7990` and finish the configuration.
