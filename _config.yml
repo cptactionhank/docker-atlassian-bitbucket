@@ -1,0 +1,28 @@
+# Site settings
+title: cptactionhank ❤ Docker
+email: martin@25144754.dk
+
+description: > # this means to ignore newlines until "baseurl:"
+  Write an awesome description for your new site here. You can edit this
+  line in _config.yml. It will appear in your document head meta (for
+  Google search results) and in your feed.xml site description.
+
+baseurl: /docker-atlassian-bitbucket # the subpath of your site, e.g. /blog/
+url: http://cptactionhank.github.io # the base hostname & protocol for your site
+
+product:
+  name: Atlassian Bitbucket Server
+  short: Bitbucket
+
+repo:
+  github: docker-atlassian-bitbucket
+  docker: atlassian-bitbucket
+
+author:
+  name: Martin Aksel Jensen
+  email: martin@25144754.dk
+  url: http://25144754.dk
+  linkedin: martinakseljensen
+  github:  cptactionhank
+  bitbucket: cptactionhank
+  dockerhub: cptactionhank

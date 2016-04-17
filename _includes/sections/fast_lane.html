@@ -1,0 +1,9 @@
+<section>
+	<h1>I'm in the fast lane!</h1>
+
+	<p>To quickly get started with running a {{site.product.short}} instance, first run the following command:</p>
+
+	<pre><code class="bash">docker run --detach --publish <span class="dynamic" ng-bind="container.port" title="The exposed JIRA port"></span>:7990 {{site.author.dockerhub}}/{{site.repo.docker}}:<span class="dynamic" ng-bind="container.version.name" title="The JIRA image version"></span></code></pre>
+
+	<p>Then use your browser to nagivate to <code>http://<span class="dynamic" ng-bind="container.host" title="The Docker host hostname"></span>:<span class="dynamic" ng-bind="container.port" title="The exposed JIRA port"></span></code> and finish the configuration.</p>
+</section>

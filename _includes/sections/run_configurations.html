@@ -1,0 +1,25 @@
+<section>
+  <h1>Using a Process Manager</h1>
+
+  <p>Paranoid sentient hotdog corporation motion Shibuya euro-pop numinous meta-drone smart. Gang ablative Tokyo market render-farm long-chain hydrocarbons man. Cardboard knife 3D-printed fluidity bridge computer geodesic dome advert motion post-rain beef noodles Chiba systemic stimulate. Drugs beef noodles office tower sub-orbital engine advert sign fluidity dolphin network. Rebar pen fluidity drone shoes Kowloon claymore mine beef noodles. Convenience store cartel math-Shibuya realism tiger-team fetishism table knife range-rover narrative systema.</p>
+
+  <div class="form-horizontal">
+    <div class="form-group">
+      <label for="container-name" class="col-sm-3 control-label">Container name:</label>
+      <div class="col-sm-9">
+        <input type="text" class="form-control" data-ng-model="container.name" data-ng-init="container.name='jira-container'" />
+        <span class="help-block">Write the name of the JIRA container</span>
+      </div>
+    </div>
+  </div>
+
+  <h2>Container creation</h2>
+
+  <p>The first thing you need to do is creating the container instance that should be managed by a process manager. This is done by performing the following command below and after this, you should configure your service with the process manager of your choice. You can use the configuration file examples below for systemd and upstart.</p>
+
+  <pre><code code class="bash">{%raw%}$ docker pull {%endraw%}{{ site.author.dockerhub }}/{{ site.repo.docker }}:{%raw%}{{ container.version.name }}
+$ docker create --restart=no --name "{{ container.name }}" \
+  --publish "{{ container.port }}:8080" \
+  {{ container.env|formatEnvironment }}\{%endraw%}
+  {{ site.author.dockerhub }}/{{ site.repo.docker }}:{%raw%}{{ container.version.name }}{%endraw%}
+</code></pre>
