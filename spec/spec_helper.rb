@@ -7,8 +7,9 @@ require 'poltergeist/suppressor'
 REGEX_WARN    = /WARNING|WARN/
 REGEX_ERROR   = /ERROR|ERR/
 REGEX_SEVERE  = /SEVERE|FATAL/
-REGEX_STARTUP = /Server startup in \d+ ms/
-REGEX_FILTER  = Regexp.compile (Regexp.union [])
+REGEX_STARTUP = /Server startup in (\d+ ms)/
+REGEX_FILTER  = Regexp.compile Regexp.union [
+]
 
 Dir["#{File.dirname(__FILE__)}/support/**/*.rb"].each { |file| require file }
 
@@ -54,11 +55,11 @@ RSpec.configure do |config|
   Capybara.configure do |conf|
     conf.register_driver :poltergeist_debug do |app|
       Capybara::Poltergeist::Driver.new app, timeout: timeout,
-        # we should't care about javascript errors since we did not make any
-        # implementation, but only deliver the software packages as best
-        # effort and this is more an Atlassian problem.
-        js_errors: false,
-        phantomjs_logger: Capybara::Poltergeist::Suppressor.new
+      # we should't care about javascript errors since we did not make any
+      # implementation, but only deliver the software packages as best
+      # effort and this is more an Atlassian problem.
+      js_errors: false,
+      phantomjs_logger: Capybara::Poltergeist::Suppressor.new
     end
 
     # Since we're connecting to a running Docker container, Capybara should

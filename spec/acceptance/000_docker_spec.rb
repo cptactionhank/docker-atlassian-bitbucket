@@ -1,6 +1,3 @@
-require 'docker'
-require 'spec_helper'
-
 describe 'Docker image building' do
   context 'when validating host software' do
     it 'should supported version' do
@@ -13,11 +10,11 @@ describe 'Docker image building' do
 
     it { is_expected.to_not be_nil }
     it { is_expected.to have_exposed_port tcp: 7990 }
-    it { is_expected.to_not have_exposed_port udp: 7990 }
     it { is_expected.to have_exposed_port tcp: 7999 }
+    it { is_expected.to_not have_exposed_port udp: 7990 }
     it { is_expected.to_not have_exposed_port udp: 7999 }
     it { is_expected.to have_volume '/var/atlassian/bitbucket' }
-    it { is_expected.not_to have_volume '/opt/atlassian/bitbucket' }
+    it { is_expected.to have_volume '/opt/atlassian/bitbucket/logs' }
     it { is_expected.to have_working_directory '/var/atlassian/bitbucket' }
   end
 end

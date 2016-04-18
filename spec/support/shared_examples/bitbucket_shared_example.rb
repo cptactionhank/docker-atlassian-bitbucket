@@ -1,24 +1,9 @@
-shared_examples 'an acceptable Bitbucket instance' do |database_examples|
-  include_context 'a buildable docker image', '.', Env: ["CATALINA_OPTS=-Xms64m"]
-
-  describe 'when starting a Bitbucket instance' do
-    before(:all) { @container.start! PublishAllPorts: true }
-
-    it { is_expected.to_not be_nil }
-    it { is_expected.to be_running }
-    it { is_expected.to have_mapped_ports tcp: 7990 }
-    it { is_expected.not_to have_mapped_ports udp: 7990 }
-    it { is_expected.to have_mapped_ports tcp: 7999 }
-    it { is_expected.not_to have_mapped_ports udp: 7999 }
-    it { is_expected.to wait_until_output_matches REGEX_STARTUP }
-  end
-
+shared_examples 'an acceptable Bitbucket Server instance' do |database_examples|
   describe 'Going through the setup process' do
     subject { page }
 
     context 'when visiting the root page' do
       before :all do
-        @container.setup_capybara_url tcp: 7990
         visit '/'
       end
 
@@ -90,6 +75,8 @@ shared_examples 'an acceptable Bitbucket instance' do |database_examples|
 
   describe 'Stopping the Bitbucket instance' do
     before(:all) { @container.kill_and_wait signal: 'SIGTERM' }
+
+    subject { @container }
 
     it 'should shut down successful' do
       # give the container up to 5 minutes to successfully shutdown

@@ -16,7 +16,7 @@ RUN set -x \
     && chown -R daemon:daemon "${BITBUCKET_HOME}" \
     && mkdir -p               "${BITBUCKET_INSTALL}" \
     && curl -Ls               "https://www.atlassian.com/software/stash/downloads/binary/atlassian-bitbucket-${BITBUCKET_VERSION}.tar.gz" | tar -zx --directory  "${BITBUCKET_INSTALL}" --strip-components=1 --no-same-owner \
-    && curl -Ls                "https://dev.mysql.com/get/Downloads/Connector-J/mysql-connector-java-5.1.36.tar.gz" | tar -xz --directory "${BITBUCKET_INSTALL}/lib" --strip-components=1 --no-same-owner "mysql-connector-java-5.1.36/mysql-connector-java-5.1.36-bin.jar" \
+    && curl -Ls                "https://dev.mysql.com/get/Downloads/Connector-J/mysql-connector-java-5.1.38.tar.gz" | tar -xz --directory "${BITBUCKET_INSTALL}/lib" --strip-components=1 --no-same-owner "mysql-connector-java-5.1.38/mysql-connector-java-5.1.38-bin.jar" \
     && chmod -R 700           "${BITBUCKET_INSTALL}/conf" \
     && chmod -R 700           "${BITBUCKET_INSTALL}/logs" \
     && chmod -R 700           "${BITBUCKET_INSTALL}/temp" \
@@ -30,7 +30,8 @@ RUN set -x \
     && xmlstarlet             ed --inplace \
         --delete              "Server/Service/Engine/Host/@xmlValidation" \
         --delete              "Server/Service/Engine/Host/@xmlNamespaceAware" \
-                              "${BITBUCKET_INSTALL}/conf/server.xml"
+                              "${BITBUCKET_INSTALL}/conf/server.xml" \
+    && touch -d "@0"          "${BITBUCKET_INSTALL}/conf/server.xml"
 
 # Use the default unprivileged account. This could be considered bad practice
 # on systems where multiple processes end up being executed by 'daemon' but
@@ -43,10 +44,13 @@ EXPOSE 7990 7999
 # Set volume mount points for installation and home directory. Changes to the
 # home directory needs to be persisted as well as parts of the installation
 # directory due to eg. logs.
-VOLUME ["/var/atlassian/bitbucket"]
+VOLUME ["/var/atlassian/bitbucket","/opt/atlassian/bitbucket/logs"]
 
 # Set the default working directory as the Bitbucket home directory.
-WORKDIR ${BITBUCKET_HOME}
+WORKDIR /var/atlassian/bitbucket
+
+COPY "docker-entrypoint.sh" "/"
+ENTRYPOINT ["/docker-entrypoint.sh"]
 
 # Run Atlassian Bitbucket as a foreground process by default.
 CMD ["/opt/atlassian/bitbucket/bin/catalina.sh", "run"]
