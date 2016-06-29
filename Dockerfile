@@ -53,4 +53,4 @@ COPY "docker-entrypoint.sh" "/"
 ENTRYPOINT ["/docker-entrypoint.sh"]
 
 # Run Atlassian Bitbucket as a foreground process by default.
-CMD ["/opt/atlassian/bitbucket/bin/catalina.sh", "run"]
+CMD ["/opt/atlassian/bitbucket/bin/start-bitbucket.sh", "-fg"]
