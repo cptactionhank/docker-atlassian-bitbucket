@@ -36,7 +36,7 @@ RUN set -x \
 # Use the default unprivileged account. This could be considered bad practice
 # on systems where multiple processes end up being executed by 'daemon' but
 # here we only ever run one process anyway.
-USER daemon:daemon
+# USER daemon:daemon
 
 # Expose default HTTP and SSH ports.
 EXPOSE 7990 7999
@@ -53,4 +53,4 @@ COPY "docker-entrypoint.sh" "/"
 ENTRYPOINT ["/docker-entrypoint.sh"]
 
 # Run Atlassian Bitbucket as a foreground process by default.
-CMD ["/opt/atlassian/bitbucket/bin/start-bitbucket.sh", "-fg"]
+CMD ["/opt/atlassian/bitbucket/bin/catalina.sh", "run"]
