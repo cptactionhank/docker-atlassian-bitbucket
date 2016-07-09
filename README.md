@@ -12,6 +12,8 @@ This is a containerized installation of Atlassian Bitbucket Server with Docker, 
 
 If you want to help out, you can check out the contribution section further down.
 
+Note: newer versions of Atlassian Bitbucket Server includes an Elastic Search service as well, that is when you are not running Bitbucket in foreground mode. To include searching capability using the Elastic Search bundled system add-on it is necessary to setup an external service for this ie. starting an additional container running Elastic Search.
+
 ## I'm in the fast lane! Get me started
 
 To quickly get started running a Bitbucket Server instance, use the following command:
