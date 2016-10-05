@@ -3,7 +3,7 @@ FROM java:8
 # Setup useful environment variables
 ENV BITBUCKET_HOME     /var/atlassian/bitbucket
 ENV BITBUCKET_INSTALL  /opt/atlassian/bitbucket
-ENV BITBUCKET_VERSION  4.9.1
+ENV BITBUCKET_VERSION  4.10.0
 
 # Install Atlassian Bitbucket and helper tools and setup initial home
 # directory structure.
