@@ -18,7 +18,7 @@ Note: newer versions of Atlassian Bitbucket Server includes an Elastic Search se
 
 To quickly get started running a Bitbucket Server instance, use the following command:
 ```bash
-docker run --detach --publish 8080:8080 cptactionhank/atlassian-bitbucket:latest
+docker run --detach --publish 7990:7990 cptactionhank/atlassian-bitbucket:latest
 ```
 
 Then simply navigate your preferred browser to `http://[dockerhost]:7990` and finish the configuration.
