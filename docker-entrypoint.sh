@@ -13,6 +13,10 @@ if [ "$(stat --format "%Y" "${BITBUCKET_INSTALL}/conf/server.xml")" -eq "0" ]; t
   if [ -n "${X_PROXY_SCHEME}" ]; then
     xmlstarlet ed --inplace --pf --ps --insert '//Connector[@port="7990"]' --type "attr" --name "scheme" --value "${X_PROXY_SCHEME}" "${BITBUCKET_INSTALL}/conf/server.xml"
   fi
+  if [ "${X_PROXY_SCHEME}" = "https" ]; then
+    xmlstarlet ed --inplace --pf --ps --insert '//Connector[@port="7990"]' --type "attr" --name "secure" --value "true" "${BITBUCKET_INSTALL}/conf/server.xml"
+    xmlstarlet ed --inplace --pf --ps --update '//Connector[@port="7990"]/@redirectPort' --value "${X_PROXY_PORT}" "${BITBUCKET_INSTALL}/conf/server.xml"
+  fi
   if [ -n "${X_PATH}" ]; then
     xmlstarlet ed --inplace --pf --ps --update '//Context/@path' --value "${X_PATH}" "${BITBUCKET_INSTALL}/conf/server.xml"
   fi
