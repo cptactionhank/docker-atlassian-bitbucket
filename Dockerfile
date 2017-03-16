@@ -9,7 +9,8 @@ ENV BITBUCKET_VERSION  4.14.2
 # directory structure.
 RUN set -x \
     && apt-get update --quiet \
-    && apt-get install --quiet --yes --no-install-recommends libtcnative-1 git-core xmlstarlet \
+    && apt-get install --quiet --yes --no-install-recommends git-core xmlstarlet \
+    && apt-get install --quiet --yes --no-install-recommends -t jessie-backports libtcnative-1 \
     && apt-get clean \
     && mkdir -p               "${BITBUCKET_HOME}/lib" \
     && chmod -R 700           "${BITBUCKET_HOME}" \
