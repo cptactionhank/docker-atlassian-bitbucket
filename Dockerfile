@@ -8,6 +8,7 @@ ENV BITBUCKET_VERSION  4.14.4
 # Install Atlassian Bitbucket and helper tools and setup initial home
 # directory structure.
 RUN set -x \
+    && echo "deb http://ftp.debian.org/debian jessie-backports main" > /etc/apt/sources.list.d/jessie-backports.list \
     && apt-get update --quiet \
     && apt-get install --quiet --yes --no-install-recommends git-core xmlstarlet \
     && apt-get install --quiet --yes --no-install-recommends -t jessie-backports libtcnative-1 \
