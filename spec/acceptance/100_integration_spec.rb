@@ -1,8 +1,8 @@
-describe 'Atlassian Bitbucket Server with Embedded Database' do
-  include_examples 'a buildable Docker image', '.', env: ["CATALINA_OPTS=-Xms1024m -Xmx1024m -XX:+UseG1GC -Datlassian.plugins.enable.wait=#{Docker::DSL.timeout} -Datlassian.darkfeature.jira.onboarding.feature.disabled=true"]
-
-  include_examples 'an acceptable Bitbucket Server instance', 'using an embedded database'
-end
+#describe 'Atlassian Bitbucket Server with Embedded Database' do
+#  include_examples 'a buildable Docker image', '.', env: ["CATALINA_OPTS=-Xms1024m -Xmx1024m -XX:+UseG1GC -Datlassian.plugins.enable.wait=#{Docker::DSL.timeout} -Datlassian.darkfeature.jira.onboarding.feature.disabled=true"]#
+#
+#  include_examples 'an acceptable Bitbucket Server instance', 'using an embedded database'
+#end
 
 # describe 'Atlassian Bitbucket Server with PostgreSQL 9.3 Database' do
 #   include_examples 'a buildable Docker image', '.', env: ["CATALINA_OPTS=-Xms1024m -Xmx1024m -XX:+UseG1GC -Datlassian.plugins.enable.wait=#{Docker::DSL.timeout} -Datlassian.darkfeature.jira.onboarding.feature.disabled=true"]
